@@ -105,12 +105,12 @@ class BlobPlayer {
     push();
 
     // car body
-    fill(20);
+    fill(200, 0, 0);
     rectMode(CENTER);
     rect(this.x, this.y - 120, 60, 24, 6);
 
     // roof
-    fill(40);
+    fill(200);
     rect(this.x - 5, this.y - 120 - 12, 30, 12, 4);
 
     // wheels
