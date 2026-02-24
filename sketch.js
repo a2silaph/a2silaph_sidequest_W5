@@ -72,9 +72,4 @@ function draw() {
   cam.end();
 }
 
-function keyPressed() {
-  if (key === " " || key === "W" || key === "w" || keyCode === UP_ARROW) {
-    player.tryJump();
-  }
-  if (key === "r" || key === "R") loadLevel(levelIndex);
-}
+function keyPressed() {}
