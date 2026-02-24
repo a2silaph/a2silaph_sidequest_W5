@@ -6,8 +6,8 @@ class BlobPlayer {
     this.vx = 0;
     this.vy = 0;
 
-    this.accel = 0.55;
-    this.maxRun = 4.0;
+    this.accel = 1.5;
+    this.maxRun = 2.0;
 
     this.gravity = 0.65;
     this.jumpV = -11.0;
@@ -101,23 +101,29 @@ class BlobPlayer {
     this.t += this.tSpeed;
   }
 
-  draw(colHex) {
-    fill(color(colHex));
-    noStroke();
-    beginShape();
-    for (let i = 0; i < this.points; i++) {
-      const a = (i / this.points) * TAU;
-      const n = noise(
-        cos(a) * this.wobbleFreq + 100,
-        sin(a) * this.wobbleFreq + 100,
-        this.t,
-      );
-      const rr = this.r + map(n, 0, 1, -this.wobble, this.wobble);
-      vertex(this.x + cos(a) * rr, this.y + sin(a) * rr);
-    }
-    endShape(CLOSE);
-  }
+  draw() {
+    push();
 
+    // car body
+    fill(20);
+    rectMode(CENTER);
+    rect(this.x, this.y - 120, 60, 24, 6);
+
+    // roof
+    fill(40);
+    rect(this.x - 5, this.y - 120 - 12, 30, 12, 4);
+
+    // wheels
+    fill(0);
+    circle(this.x - 18, this.y - 108, 12);
+    circle(this.x + 18, this.y - 108, 12);
+
+    // headlights glow
+    fill(255, 255, 180, 120);
+    ellipse(this.x + 35, this.y - 120, 60, 30);
+
+    pop();
+  }
   static overlap(a, b) {
     return (
       a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y
