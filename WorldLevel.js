@@ -100,6 +100,20 @@ class WorldLevel {
     // road
     fill(30);
     rect(0, this.h - 120, this.w, 120);
+    // road shoulder
+    fill(20);
+    rect(0, this.h, this.w, 120);
+
+    stroke(180);
+    strokeWeight(4);
+
+    line(0, this.h + 50, this.w, this.h + 50);
+    stroke(140);
+    strokeWeight(3);
+
+    for (let x = 0; x < this.w; x += 120) {
+      line(x, this.h + 93, x, this.h + 53);
+    }
 
     // lane divider
     stroke(255, 255, 100);
